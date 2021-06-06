@@ -34,46 +34,28 @@ func main() {
 
 	// Signal management
 	sigChan := make(chan os.Signal, 10)
-	errChan := make(chan error)
-	abortChan := make(chan interface{})
-	defer close(sigChan)
-	defer close(errChan)
-	defer close(abortChan)
-
-	go func() {
-		nodePortDeleter, err := deleter.New(viper.GetString("cilium-url"))
-		timer := time.NewTimer(10 * time.Second)
-		if err != nil {
-			errChan <- err
-			return
-		}
-
-		for {
-			err := nodePortDeleter.DeleteServices()
-			if err != nil {
-				log.Errorf("Error return by service deleter: %s", err)
-			}
-
-			select {
-				case abort := <-abortChan:
-					_ = abort
-					return
-				case <-timer.C:
-			}
-
-			timer.Reset(10 * time.Second)
-		}
-	}()
-
 	signal.Notify(sigChan, syscall.SIGTERM, syscall.SIGINT)
 
-	select {
-	case signal := <-sigChan:
-		log.Printf("Caught %s, shutting down...", signal.String())
-
-		abortChan <- nil
-
-	case err := <-errChan:
+	nodePortDeleter, err := deleter.New(viper.GetString("cilium-url"))
+	timer := time.NewTimer(10 * time.Second)
+	if err != nil {
 		log.Errorf("Unrecoverable error while deleting services: %v", err)
+		return
+	}
+
+	for {
+		err := nodePortDeleter.DeleteServices()
+		if err != nil {
+			log.Errorf("Error return by service deleter: %s", err)
+		}
+
+		select {
+			case signal := <-sigChan:
+				log.Printf("Caught %s, shutting down...", signal.String())
+				return
+			case <-timer.C:
+		}
+
+		timer.Reset(10 * time.Second)
 	}
 }
