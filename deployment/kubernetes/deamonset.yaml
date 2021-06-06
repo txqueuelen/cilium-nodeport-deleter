@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cilium-nodeport-deleter
+spec:
+  selector:
+    matchLabels:
+      app: cilium-nodeport-deleter
+  template:
+    metadata:
+      labels:
+        app: cilium-nodeport-deleter
+    spec:
+      containers:
+        - name: cilium-nodeport-deleter
+          image: kangcode/cilium-nodeport-deleter:latest
+          resources: {}
+      volumes:
+        - mountPath: /var/run/cilium
+          name: cilium-run
+    tolerations:
+      - effect: NoExecute
+        key: node.kubernetes.io/not-ready
+        operator: Exists
+      - effect: NoExecute
+        key: node.kubernetes.io/unreachable
+        operator: Exists
+      - effect: NoSchedule
+        key: node.kubernetes.io/disk-pressure
+        operator: Exists
+      - effect: NoSchedule
+        key: node.kubernetes.io/memory-pressure
+        operator: Exists
+      - effect: NoSchedule
+        key: node.kubernetes.io/pid-pressure
+        operator: Exists
+      - effect: NoSchedule
+        key: node.kubernetes.io/unschedulable
+        operator: Exists
+      - effect: NoSchedule
+        key: node.kubernetes.io/network-unavailable
+        operator: Exists
+    volumes:
+    - hostPath:
+        path: /var/run/cilium
+        type: DirectoryOrCreate
