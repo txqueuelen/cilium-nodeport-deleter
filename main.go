@@ -54,8 +54,7 @@ func main() {
 				log.Printf("Caught %s, shutting down...", signal.String())
 				return
 			case <-timer.C:
+				timer.Reset(10 * time.Second)
 		}
-
-		timer.Reset(10 * time.Second)
 	}
 }
