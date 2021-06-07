@@ -37,6 +37,7 @@ jobs:
 
   push:
     name: Push to registry
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@main
