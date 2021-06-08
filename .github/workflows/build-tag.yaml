@@ -1,40 +1,9 @@
-name: Image creation and publishing
+name: Image versioning
 on:
   push:
-    branches:
-      - main
-  pull_request:
+    tags:
+      - '*'
 jobs:
-  build-binary:
-    name: Build binary
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-go@v2
-        with:
-          go-version: '1.16'
-      - name: Build
-        run: |
-          make build OUTPUT_FOLDER=${{ github.sha }}
-      - uses: actions/upload-artifact@main
-        with:
-          name: build-out-${{ github.sha }}
-          path: ${{ github.sha }}/*
-
-# Registrysh maybe?
-# ################# #
-# package:
-#   name: Package Docker
-#   runs-on: ubuntu-latest
-#   steps:
-#     - uses: actions/download-artifact@main
-#       with:
-#         name: build-out-${{ github.sha }}
-#         path: out
-#     - name: Package
-#       run: |
-#         make package
-
   build-image:
     name: Push to registry
     needs: build-binary
@@ -65,8 +34,12 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: ghcr.io/${{ github.repository }}
+          flavour: |
+            latest=true
           tags: |
-            type=ref,event=branch
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
 
       - name: Build and push
         uses: docker/build-push-action@v2
