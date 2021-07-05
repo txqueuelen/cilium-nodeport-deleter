@@ -1,56 +1,18 @@
 name: Image creation and publishing
 on:
   push:
-    branches:
-      - main
     tags:
       - "*"
-  pull_request:
 jobs:
-  build-binary:
-    name: Build binary
+  build:
+    name: Push to registry
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-go@v2
         with:
           go-version: '1.16'
-      - name: Build
-        run: |
-          make build OUTPUT_FOLDER=${{ github.sha }}
-      - uses: actions/upload-artifact@main
-        with:
-          name: build-out-${{ github.sha }}
-          path: ${{ github.sha }}/*
 
-# Registrysh maybe?
-# ################# #
-# package:
-#   name: Package Docker
-#   runs-on: ubuntu-latest
-#   steps:
-#     - uses: actions/download-artifact@main
-#       with:
-#         name: build-out-${{ github.sha }}
-#         path: out
-#     - name: Package
-#       run: |
-#         make package
-
-  build-image:
-    name: Push to registry
-    needs: build-binary
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/download-artifact@main
-        with:
-          name: build-out-${{ github.sha }}
-          path: out
-      - name: Preserve permissions
-        # https://github.com/actions/download-artifact#permission-loss
-        run: |
-          chmod 555 out/nodeport-deleter
       - name: Cache Docker layers
         uses: actions/cache@v2
         with:
@@ -58,7 +20,6 @@ jobs:
           key: ${{ runner.os }}-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
         with:
@@ -73,7 +34,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v3
@@ -82,12 +42,15 @@ jobs:
           flavour: |
             latest=true
           tags: |
-            type=ref,event=branch
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
 
-      - name: Build and push
+      - name: Build binary
+        run: |
+          make build
+
+      - name: Build image and push
         uses: docker/build-push-action@v2
         with:
           context: .
