@@ -1,11 +1,7 @@
-FROM alpine:latest
+FROM scratch
 
-ARG OUTPUT_FOLDER=out
-ARG BINARY_NAME=nodeport-deleter
+ARG BINARY_NAME
 
-WORKDIR /app
+ENTRYPOINT [ "/bin" ]
 
-ADD ./$OUTPUT_FOLDER/$BINARY_NAME /app/nodeport-deleter
-
-ENTRYPOINT [ "/app/nodeport-deleter" ]
-CMD []
+COPY $BINARY_NAME /bin

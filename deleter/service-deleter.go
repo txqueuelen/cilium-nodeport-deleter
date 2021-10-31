@@ -63,8 +63,7 @@ func (cc *NodePortDeleter) DeleteServices() error {
 				log.WithFields(log.Fields{
 					"ns":   service.Spec.Flags.Namespace,
 					"name": service.Spec.Flags.Name,
-				}).Warningf("a hostport is open")
-				continue
+				}).Warningf("A hostport is open!")
 			}
 
 			if service.Spec.Flags.Type == "ExternalIPs" {

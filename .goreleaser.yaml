@@ -1,0 +1,127 @@
+before:
+  hooks:
+    - go mod tidy
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - 386
+      - amd64
+      - arm
+      - arm64
+    goarm:
+      - 7
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "next-{{ incpatch .Version }}"
+
+changelog:
+  skip: true
+
+dockers:
+  - goarch: 386
+    use: buildx
+    image_templates:
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-386"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-386"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-386"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-386"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:latest-386"
+    build_flag_templates:
+      - "--platform=linux/386"
+      - "--build-arg=BINARY_NAME={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.created={{ .Date }}"
+      - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
+      - "--label=org.opencontainers.image.version={{ .Version }}"
+
+  - goarch: amd64
+    use: buildx
+    image_templates:
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-amd64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-amd64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-amd64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-amd64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:latest-amd64"
+    build_flag_templates:
+      - "--platform=linux/amd64"
+      - "--build-arg=BINARY_NAME={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.created={{ .Date }}"
+      - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
+      - "--label=org.opencontainers.image.version={{ .Version }}"
+
+  - goarch: arm
+    goarm: 7
+    use: buildx
+    image_templates:
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-arm"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-arm"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-arm"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-arm"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:latest-arm"
+    build_flag_templates:
+      - "--platform=linux/arm"
+      - "--build-arg=BINARY_NAME={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.created={{ .Date }}"
+      - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
+      - "--label=org.opencontainers.image.version={{ .Version }}"
+
+  - goarch: arm64
+    use: buildx
+    image_templates:
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-arm64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-arm64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-arm64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-arm64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:latest-arm64"
+    build_flag_templates:
+      - "--platform=linux/arm64"
+      - "--build-arg=BINARY_NAME={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.created={{ .Date }}"
+      - "--label=org.opencontainers.image.title={{ .ProjectName }}"
+      - "--label=org.opencontainers.image.revision={{ .FullCommit }}"
+      - "--label=org.opencontainers.image.version={{ .Version }}"
+
+docker_manifests:
+  - name_template: "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}"
+    image_templates:
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-386"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-amd64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-arm"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-arm64"
+
+  - name_template: "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}"
+    image_templates:
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-386"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-amd64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-arm"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-arm64"
+
+  - name_template: "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}"
+    image_templates:
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-386"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-amd64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-arm"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-arm64"
+
+  - name_template: "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}"
+    image_templates:
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-386"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-amd64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-arm"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-arm64"
+
+  - name_template: "gcr.io/kang-makes/{{ .ProjectName }}:latest"
+    image_templates:
+      - "gcr.io/kang-makes/{{ .ProjectName }}:latest-386"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:latest-amd64"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:latest-arm"
+      - "gcr.io/kang-makes/{{ .ProjectName }}:latest-arm64"
