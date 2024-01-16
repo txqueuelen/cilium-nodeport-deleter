@@ -19,8 +19,8 @@ jobs:
       - name: Generate tag
         id: tag
         run: |
-          CILIUM_CHECKSUM=$(grep -E 'github.com/cilium/cilium v[0-9]*\.[0-9]*\.[0-9]* h1:.*' go.sum)
-          CILIUM_VERSION=$(sed -s 's|github.com/cilium/cilium v\([0-9]*\.[0-9]*\.[0-9]*\) h1:.*|\1|' <<<"${CILIUM_CHECKSUM}")
+          CILIUM_CHECKSUM=$(grep -E 'github.com/cilium/cilium v[0-9]*\.[0-9]*\.[0-9]*$' go.mod)
+          CILIUM_VERSION=$(sed -s 's|github.com/cilium/cilium v\([0-9]*\.[0-9]*\.[0-9]*\)$|\1|' <<<"${CILIUM_CHECKSUM}")
           echo "CILIUM_VERSION=${CILIUM_VERSION}" >> "$GITHUB_OUTPUT"
     outputs:
       tag: ${{ steps.tag.outputs.CILIUM_VERSION }}
