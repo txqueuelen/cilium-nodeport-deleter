@@ -24,6 +24,9 @@ snapshot:
 changelog:
   skip: true
 
+release:
+  disable: true
+
 dockers:
   - goarch: 386
     use: buildx
@@ -33,6 +36,11 @@ dockers:
       - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-386"
       - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-386"
       - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-386"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-{{ .ShortCommit }}-386"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-{{ .ShortCommit }}-386"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-{{ .ShortCommit }}-386"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-{{ .ShortCommit }}-386"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-{{ .ShortCommit }}-386"
     build_flag_templates:
       - "--platform=linux/386"
       - "--build-arg=BINARY_NAME={{ .ProjectName }}"
@@ -49,6 +57,11 @@ dockers:
       - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-amd64"
       - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-amd64"
       - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-amd64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-{{ .ShortCommit }}-amd64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-{{ .ShortCommit }}-amd64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-{{ .ShortCommit }}-amd64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-{{ .ShortCommit }}-amd64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-{{ .ShortCommit }}-amd64"
     build_flag_templates:
       - "--platform=linux/amd64"
       - "--build-arg=BINARY_NAME={{ .ProjectName }}"
@@ -66,6 +79,11 @@ dockers:
       - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-arm"
       - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-arm"
       - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-arm"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-{{ .ShortCommit }}-arm"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-{{ .ShortCommit }}-arm"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-{{ .ShortCommit }}-arm"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-{{ .ShortCommit }}-arm"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-{{ .ShortCommit }}-arm"
     build_flag_templates:
       - "--platform=linux/arm"
       - "--build-arg=BINARY_NAME={{ .ProjectName }}"
@@ -82,6 +100,11 @@ dockers:
       - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-arm64"
       - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-arm64"
       - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-arm64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-{{ .ShortCommit }}-arm64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-{{ .ShortCommit }}-arm64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-{{ .ShortCommit }}-arm64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-{{ .ShortCommit }}-arm64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-{{ .ShortCommit }}-arm64"
     build_flag_templates:
       - "--platform=linux/arm64"
       - "--build-arg=BINARY_NAME={{ .ProjectName }}"
@@ -125,3 +148,39 @@ docker_manifests:
       - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-amd64"
       - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-arm"
       - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-arm64"
+
+
+  - name_template: "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-{{ .ShortCommit }}"
+    image_templates:
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-{{ .ShortCommit }}-386"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-{{ .ShortCommit }}-amd64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-{{ .ShortCommit }}-arm"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Tag }}-{{ .ShortCommit }}-arm64"
+
+  - name_template: "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-{{ .ShortCommit }}"
+    image_templates:
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-{{ .ShortCommit }}-386"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-{{ .ShortCommit }}-amd64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-{{ .ShortCommit }}-arm"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}-{{ .ShortCommit }}-arm64"
+
+  - name_template: "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-{{ .ShortCommit }}"
+    image_templates:
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-{{ .ShortCommit }}-386"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-{{ .ShortCommit }}-amd64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-{{ .ShortCommit }}-arm"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}-{{ .ShortCommit }}-arm64"
+
+  - name_template: "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-{{ .ShortCommit }}"
+    image_templates:
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-{{ .ShortCommit }}-386"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-{{ .ShortCommit }}-amd64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-{{ .ShortCommit }}-arm"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:{{ .Major }}.{{ .Minor }}.{{ .Patch }}-{{ .ShortCommit }}-arm64"
+
+  - name_template: "ghcr.io/kang-makes/{{ .ProjectName }}:latest-{{ .ShortCommit }}"
+    image_templates:
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-{{ .ShortCommit }}-386"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-{{ .ShortCommit }}-amd64"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-{{ .ShortCommit }}-arm"
+      - "ghcr.io/kang-makes/{{ .ProjectName }}:latest-{{ .ShortCommit }}-arm64"
