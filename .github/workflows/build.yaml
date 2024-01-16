@@ -56,12 +56,14 @@ jobs:
           args: build --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ORGANIZATION: ${{ github.repository_owner }}
 
       - name: Run GoReleaser
         if: startsWith(github.ref, 'refs/heads/main') == true
         uses: goreleaser/goreleaser-action@v5
         with:
           version: latest
-          args: release --rm-dist --clean
+          args: release --clean
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ORGANIZATION: ${{ github.repository_owner }}
