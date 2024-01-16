@@ -3,6 +3,8 @@ github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2/go.mod h1:W
 github.com/cilium/checkmate v1.0.3 h1:CQC5eOmlAZeEjPrVZY3ZwEBH64lHlx9mXYdUehEwI5w=
 github.com/cilium/cilium v1.14.4 h1:iJ/LgrFMTHhl0/fMas6T1IY7VWGhtkh/B4v921GcNQk=
 github.com/cilium/cilium v1.14.4/go.mod h1:lz48ydfHJ2Q/dqAOIrAzQXmypA5w1GAi7vipQorETE8=
+github.com/cilium/cilium v1.14.5 h1:Jx45FY/swyW5mGPJIWghrxSreuC8QP000wyz5BVZZyU=
+github.com/cilium/cilium v1.14.5/go.mod h1:ZwDeGpYME9hMZYfy+WbJ0siiJ5i3c98o1hcB072mylk=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc h1:U9qPSI2PIWSS1VwoXQT9A3Wy9MM3WgvqSxFWenqJduM=
