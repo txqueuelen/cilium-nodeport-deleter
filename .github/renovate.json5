@@ -1,0 +1,10 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    "github>txqueuelen/.github//renovate/automerge-workflows-all.json",
+
+    "github>txqueuelen/.github//renovate/automerge-all-patch.json",
+    "github>txqueuelen/.github//renovate/automerge-all-minor.json"
+  ]
+}
