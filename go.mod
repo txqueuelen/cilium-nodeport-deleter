@@ -1,6 +1,6 @@
 module github.com/kang-makes/cilium-nodeport-deleter
 
-go 1.22.0
+go 1.22.1
 
 require (
 	github.com/cilium/cilium v1.15.1
