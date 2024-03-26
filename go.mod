@@ -3,7 +3,7 @@ module github.com/kang-makes/cilium-nodeport-deleter
 go 1.22.1
 
 require (
-	github.com/cilium/cilium v1.15.2
+	github.com/cilium/cilium v1.15.3
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.18.2
@@ -68,8 +68,8 @@ require (
 	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
-	k8s.io/apimachinery v0.29.0-rc.1 // indirect
-	k8s.io/client-go v0.29.0-rc.1 // indirect
+	k8s.io/apimachinery v0.29.2 // indirect
+	k8s.io/client-go v0.29.2 // indirect
 	k8s.io/klog/v2 v2.120.0 // indirect
-	k8s.io/utils v0.0.0-20230726121419-3b25d923346b // indirect
+	k8s.io/utils v0.0.0-20240102154912-e7106e64919e // indirect
 )
