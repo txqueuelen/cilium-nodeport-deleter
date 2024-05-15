@@ -3,7 +3,7 @@ module github.com/kang-makes/cilium-nodeport-deleter
 go 1.22.2
 
 require (
-	github.com/cilium/cilium v1.15.4
+	github.com/cilium/cilium v1.15.5
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.18.2
