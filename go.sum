@@ -21,6 +21,8 @@ github.com/cilium/cilium v1.15.4 h1:6UWB7y/vWgXEOVmCgLk8rKYodC/odU1IngH1fdKH0nE=
 github.com/cilium/cilium v1.15.4/go.mod h1:ojlr/BoauoO2o2884BGO2ukxK953ieha3eSOhhfrmlQ=
 github.com/cilium/cilium v1.15.5 h1:AFhWniiqVyQXYfpaPZTRfKdS0pLx+8lCDPp7JpAZqfo=
 github.com/cilium/cilium v1.15.5/go.mod h1:hsruyj1KCncND7AyIlbKgHUlk7V+ONxTn3EbrOu39dI=
+github.com/cilium/cilium v1.15.6 h1:YT6UYuvdua6N1KQ6mRprymCct6Ee7uCE1hckbAR2bRM=
+github.com/cilium/cilium v1.15.6/go.mod h1:UEP0tpPVhdrLC7rCHZwZ8hTpd6d01dF/1GvFPo8UhXE=
 github.com/cpuguy83/go-md2man/v2 v2.0.3/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -64,6 +66,8 @@ github.com/google/go-cmp v0.5.9/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeN
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/uuid v1.5.0 h1:1p67kYwdtXjb0gL0BPiP1Av9wiZPo5A8z2cWkTZ+eyU=
 github.com/google/uuid v1.5.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
+github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/hashicorp/golang-lru v0.5.4 h1:YDjusn29QI/Das2iO9M0BHnIbxPeyuCHsjMW+lJfyTc=
 github.com/hashicorp/golang-lru/v2 v2.0.7 h1:a+bsQ5rvGLjzHuww6tVxozPZFVghXaHOwFs4luLUK2k=
 github.com/hashicorp/golang-lru/v2 v2.0.7/go.mod h1:QeFd9opnmA6QUJc5vARoKUSoFhyfM2/ZepoAG6RGpeM=
@@ -146,6 +150,8 @@ github.com/vishvananda/netlink v1.2.1-beta.2.0.20230621221334-77712cff8739 h1:mi
 github.com/vishvananda/netlink v1.2.1-beta.2.0.20230621221334-77712cff8739/go.mod h1:0BeLktV/jHb2/Hmw1yLD7+yaIB8PDy11RCty0tCPWZg=
 github.com/vishvananda/netlink v1.2.1-beta.2.0.20231127184239-0ced8385386a h1:PdKmLjqKUM8AfjGqDbrF/C56RvuGFDMYB0Z+8TMmGpU=
 github.com/vishvananda/netlink v1.2.1-beta.2.0.20231127184239-0ced8385386a/go.mod h1:whJevzBpTrid75eZy99s3DqCmy05NfibNaF2Ol5Ox5A=
+github.com/vishvananda/netlink v1.2.1-beta.2.0.20240524165444-4d4ba1473f21 h1:tcHUxOT8j/R+0S+A1j8D2InqguXFNxAiij+8QFOlX7Y=
+github.com/vishvananda/netlink v1.2.1-beta.2.0.20240524165444-4d4ba1473f21/go.mod h1:whJevzBpTrid75eZy99s3DqCmy05NfibNaF2Ol5Ox5A=
 github.com/vishvananda/netns v0.0.0-20200728191858-db3c7e526aae/go.mod h1:DD4vA1DwXk04H54A1oHXtwZmA0grkVMdPxx/VGLCah0=
 github.com/vishvananda/netns v0.0.4 h1:Oeaw1EM2JMxD51g9uhtC0D7erkIjgmj8+JZc26m1YX8=
 github.com/vishvananda/netns v0.0.4/go.mod h1:SpkAiCQRtJ6TvvxPnOSyH3BMl6unz3xZlaprSwhNNJM=
