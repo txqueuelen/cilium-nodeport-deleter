@@ -50,7 +50,7 @@ jobs:
 
       - name: Run GoReleaser in dry run-mode
         if: startsWith(github.ref, 'refs/heads/main') == false
-        uses: goreleaser/goreleaser-action@v5
+        uses: goreleaser/goreleaser-action@v6
         with:
           version: latest
           args: build --clean
@@ -60,7 +60,7 @@ jobs:
 
       - name: Run GoReleaser
         if: startsWith(github.ref, 'refs/heads/main') == true
-        uses: goreleaser/goreleaser-action@v5
+        uses: goreleaser/goreleaser-action@v6
         with:
           version: latest
           args: release --clean
