@@ -1,3 +1,5 @@
+version: 2
+
 before:
   hooks:
     - go mod tidy
@@ -21,7 +23,7 @@ snapshot:
   name_template: "next-{{ incpatch .Version }}"
 
 changelog:
-  skip: true
+  disable: true
 
 release:
   disable: true
