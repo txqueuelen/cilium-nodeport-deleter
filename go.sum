@@ -33,6 +33,8 @@ github.com/cilium/cilium v1.16.2 h1:c/SMeMOp6VD6OuzNQ35dyqKFemT/T3jgSDnABFimhHA=
 github.com/cilium/cilium v1.16.2/go.mod h1:w6huXlvvCbDrOdKW1P5FXjT3JIXzEREtXbvhhMZHxKM=
 github.com/cilium/cilium v1.16.3 h1:Pdm3FdcdrGZ0Zh2i1oADmM89WE9xbePhRiL/8UqxEWY=
 github.com/cilium/cilium v1.16.3/go.mod h1:w6huXlvvCbDrOdKW1P5FXjT3JIXzEREtXbvhhMZHxKM=
+github.com/cilium/cilium v1.16.4 h1:YVyed/90Pfy5zyV1/v2uFLgcyWLj9/I4Sr3x3QGNRag=
+github.com/cilium/cilium v1.16.4/go.mod h1:Wgi1kl0UaiOmnzFxNAr7rON5tMp4GaiQrIvp0b2gJE0=
 github.com/cpuguy83/go-md2man/v2 v2.0.3/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/cpuguy83/go-md2man/v2 v2.0.4/go.mod h1:tgQtvFlXSQOSOSIRvRPT7W67SCa46tRHOmNcaadrF8o=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
@@ -192,6 +194,8 @@ github.com/vishvananda/netlink v1.2.1-beta.2.0.20231127184239-0ced8385386a h1:Pd
 github.com/vishvananda/netlink v1.2.1-beta.2.0.20231127184239-0ced8385386a/go.mod h1:whJevzBpTrid75eZy99s3DqCmy05NfibNaF2Ol5Ox5A=
 github.com/vishvananda/netlink v1.2.1-beta.2.0.20240524165444-4d4ba1473f21 h1:tcHUxOT8j/R+0S+A1j8D2InqguXFNxAiij+8QFOlX7Y=
 github.com/vishvananda/netlink v1.2.1-beta.2.0.20240524165444-4d4ba1473f21/go.mod h1:whJevzBpTrid75eZy99s3DqCmy05NfibNaF2Ol5Ox5A=
+github.com/vishvananda/netlink v1.3.1-0.20241022031324-976bd8de7d81 h1:9fkQcQYvtTr9ayFXuMfDMVuDt4+BYG9FwsGLnrBde0M=
+github.com/vishvananda/netlink v1.3.1-0.20241022031324-976bd8de7d81/go.mod h1:i6NetklAujEcC6fK0JPjT8qSwWyO0HLn4UKG+hGqeJs=
 github.com/vishvananda/netns v0.0.0-20200728191858-db3c7e526aae/go.mod h1:DD4vA1DwXk04H54A1oHXtwZmA0grkVMdPxx/VGLCah0=
 github.com/vishvananda/netns v0.0.4 h1:Oeaw1EM2JMxD51g9uhtC0D7erkIjgmj8+JZc26m1YX8=
 github.com/vishvananda/netns v0.0.4/go.mod h1:SpkAiCQRtJ6TvvxPnOSyH3BMl6unz3xZlaprSwhNNJM=
