@@ -5,7 +5,7 @@ go 1.22.2
 require (
 	github.com/cilium/cilium v1.16.6
 	github.com/sirupsen/logrus v1.9.3
-	github.com/spf13/pflag v1.0.6-0.20210604193023-d5e0c0615ace
+	github.com/spf13/pflag v1.0.6
 	github.com/spf13/viper v1.19.0
 )
 
