@@ -1,11 +1,11 @@
 module github.com/kang-makes/cilium-nodeport-deleter
 
-go 1.23.0
+go 1.24.0
 
 toolchain go1.24.3
 
 require (
-	github.com/cilium/cilium v1.17.3
+	github.com/cilium/cilium v1.17.4
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/pflag v1.0.6
 	github.com/spf13/viper v1.20.1
@@ -15,6 +15,7 @@ require (
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
 	github.com/blang/semver/v4 v4.0.0 // indirect
 	github.com/cespare/xxhash/v2 v2.3.0 // indirect
+	github.com/cilium/ebpf v0.17.1 // indirect
 	github.com/fsnotify/fsnotify v1.8.0 // indirect
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
