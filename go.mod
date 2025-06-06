@@ -2,7 +2,7 @@ module github.com/kang-makes/cilium-nodeport-deleter
 
 go 1.24.0
 
-toolchain go1.24.3
+toolchain go1.24.4
 
 require (
 	github.com/cilium/cilium v1.17.4
