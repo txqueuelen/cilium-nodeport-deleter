@@ -46,15 +46,15 @@ func main() {
 	for {
 		err := nodePortDeleter.DeleteServices()
 		if err != nil {
-			log.Errorf("Error return by service deleter: %s", err)
+			log.Fatalf("Error deleting services: %s", err)
 		}
 
 		select {
-			case signal := <-sigChan:
-				log.Printf("Caught %s, shutting down...", signal.String())
-				return
-			case <-timer.C:
-				timer.Reset(10 * time.Second)
+		case signal := <-sigChan:
+			log.Printf("Caught %s, shutting down...", signal.String())
+			return
+		case <-timer.C:
+			timer.Reset(10 * time.Second)
 		}
 	}
 }
