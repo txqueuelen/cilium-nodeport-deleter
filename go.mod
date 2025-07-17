@@ -7,7 +7,7 @@ toolchain go1.24.5
 require (
 	github.com/cilium/cilium v1.17.6
 	github.com/sirupsen/logrus v1.9.3
-	github.com/spf13/pflag v1.0.6
+	github.com/spf13/pflag v1.0.7
 	github.com/spf13/viper v1.20.1
 )
 
